@@ -40,7 +40,7 @@ class TodosListItem extends Component{
 	}
 	renderTaskSection(){
 		const {task,isCompeleted}=this.props;
-		console.log(this.props.task)
+		//console.log(this.props.task)
 		const color = isCompeleted?'green':"red";
 		const taskStyle={color:color,
 						 cursor:'pointer'
@@ -52,7 +52,6 @@ class TodosListItem extends Component{
 			);
 	}
 	renderActionSection(){
-		//console.log(this.props.task)
 		if(this.state.isEditing){
 			return(
 				<tr className={this.props.task.includes(this.props.searchValue)? "" : "hide"}>
@@ -60,15 +59,14 @@ class TodosListItem extends Component{
 						<input value={this.state.editValue} onChange={this.onEditHandle}/>
 					</td>
 					<td>
-						<button onClick={this.onSaveClick}> Save</button>
+						<button onClick={this.onSaveClick}>Save</button>
 						<button onClick={this.onCancelClick}> Cancel</button>
 					</td>
 				</tr>
 				)
 		}
-		else{
 			return (
-				<tr>
+				<tr className={this.props.task.includes(this.props.searchValue)? "" : "hide"}>
 						
 						{this.renderTaskSection()}
 					
@@ -78,9 +76,9 @@ class TodosListItem extends Component{
 					</td>
 				</tr>
 				)
-			}
 	}
 	render(){
+		//console.log(this.props.searchValue);
 		return(
 			<tbody>			
 				{this.renderActionSection()}

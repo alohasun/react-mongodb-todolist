@@ -4,31 +4,31 @@ class CreateTodo extends Component {
 	constructor(props) {
 		super(props)
     this.state={
-      inputValue:" "
+      inputValue:""
     }
-		//this.handleCreate = this.handleCreate.bind(this);
-    //this.handleChange=this.handleChange.bind(this);
 	}
-  /*handleChange(event){
-    this.setState({inputValue:event.target.value})
-  }*/
-  /*handleCreate(){
-    //console.log(this.state.inputValue);
-    this.props.createTask(this.state.inputValue);
-     this.setState({inputValue:" "})
-  }*/
+  
   render() {
     return (
       <div>
       <input 
-      onChange={event=>{this.setState({inputValue:event.target.value})}}
-      value={this.state.inputValue}
-      />
+        onChange={
+          event=>{this.setState({inputValue:event.target.value})
+        }}
+        value={
+          this.state.inputValue
+        }/>
       <button 
-      onClick={()=>{
-        this.props.createTask(this.state.inputValue);
-        this.setState({inputValue:" "})
-      }}>Create</button>
+        onClick={()=>{
+          this.props.createTask(this.state.inputValue);
+          this.setState({inputValue:" "});
+          this.props.handleSearch('');
+        }}>Create</button>
+      <button 
+        onClick={()=>{
+          this.props.handleSearch(this.state.inputValue);
+          this.setState({inputValue:" "});
+        }}>Search</button>
       </div>
     );
   }

@@ -8,7 +8,6 @@ class TodosList extends Component {
 		//console.log(this.props.todos)//one false one true
 		//return _.map(this.props.todos,(todo,index)=><TodosListitem key={index} {...todo}/>);
 		return this.props.todos.map((todo,index)=>
-			
 				<TodosListitem 
 					key={index} 
 					task={todo.task} 
@@ -19,17 +18,11 @@ class TodosList extends Component {
 					handleSave={this.props.handleSave}
 					taggleTask={this.props.taggleTask}
 				/>
-
 			);
 	}
-	/*function(todo,index){
-		return <TodosListitem key={index} task={todo.task} isCompleted={todo.isCompleted}/>
-	}*/
+	
   render() {
-  	//console.log(this.props)
     return (
-    	
-      
       <table>
 	      <TodosListHeader/>
 	      {this.renderItems()}
