@@ -5,14 +5,12 @@ import TodosListitem from './todos-list-item';
 class TodosList extends Component {
 	
 	renderItems(){
-		//console.log(this.props.todos)//one false one true
 		//return _.map(this.props.todos,(todo,index)=><TodosListitem key={index} {...todo}/>);
 		return this.props.todos.map((todo,index)=>
 				<TodosListitem 
-					key={index} 
-					task={todo.task} 
+					{...todo}
+					key={index}
 					index={index} 
-					isCompeleted={todo.isCompeleted}
 					deleteTask={this.props.deleteTask}
 					searchValue={this.props.searchValue}
 					handleSave={this.props.handleSave}
@@ -23,9 +21,12 @@ class TodosList extends Component {
 	
   render() {
     return (
-      <table>
-	      <TodosListHeader/>
-	      {this.renderItems()}
+      <table className="table">
+	      <TodosListHeader 
+		    sortById={this.props.sortById}
+		    sortTask={this.props.sortTask}
+		  />
+	      	{this.renderItems()}
      </table>
     );
   }
